@@ -6,7 +6,7 @@ Yolo:Bit starts bluetooth as a peripheral device (like smart watch, beacon...) s
 
 ```python
 from ble_uart_peripheral import *
-ble_start()
+ble_start('yolobit')
 ```
 
 ## Simple central mode
@@ -14,7 +14,7 @@ Yolo:Bit starts bluetooth to connect to other bluetooth device.
 
 ```python
 from ble_simple_central import *
-ble_start()
+ble_connect('yolobit')
 ```
 
 ## REPL mode
@@ -22,7 +22,7 @@ Yolo:Bit starts bluetooth and turn on terminal mode so that phone app can connec
 
 ```python
 from ble_uart_repl import *
-ble_start()
+ble_start_repl('yolobit')
 ```
 
 # Send message
