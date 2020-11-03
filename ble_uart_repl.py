@@ -91,6 +91,6 @@ def ble_disconnect():
     pass # not supported in this bluetooth mode
 
 if __name__ == "__main__":
-    ble_start()
+    ble_start_repl()
 
 

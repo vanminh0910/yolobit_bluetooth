@@ -148,7 +148,12 @@ class BLESimpleCentral:
             conn_handle, value_handle, notify_data = data
             if conn_handle == self._conn_handle and value_handle == self._tx_handle:
                 if self._notify_callback:
-                    self._notify_callback(notify_data.decode().strip())
+                    m = notify_data
+                    try:
+                        msg = m.decode('utf8')
+                    except UnicodeError:
+                        msg = ''.join([chr(c) for c in m])
+                    self._notify_callback(msg)
 
     # Returns true if we've successfully connected and discovered characteristics.
     def is_connected(self):

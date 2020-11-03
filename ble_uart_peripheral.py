@@ -47,7 +47,11 @@ class BLEUART:
         self._advertise()
     
     def _on_rx(self):
-        msg = self.read().decode().strip()
+        m = self.read()
+        try:
+            msg = m.decode('utf8')
+        except UnicodeError:
+            msg = ''.join([chr(c) for c in m])
         
         if self._handler_user:
             self._handler_user(msg)
